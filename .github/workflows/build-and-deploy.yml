@@ -23,6 +23,7 @@ jobs:
           push: true
           tags: mobyit/catchemall:${{ github.ref_name }}
   deploy:
+    needs: build
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
