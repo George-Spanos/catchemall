@@ -5,8 +5,10 @@ name: Deploy Stack
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - "main"
+    # tags:
+    #   - "v*"
 jobs:
   build:
     runs-on: ubuntu-22.04
