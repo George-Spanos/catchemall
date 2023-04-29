@@ -5,16 +5,14 @@
 import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/_app.tsx";
 import * as $1 from "./routes/api/_types.ts";
-import * as $2 from "./routes/api/getPokemonList.ts";
-import * as $3 from "./routes/index.tsx";
+import * as $2 from "./routes/index.tsx";
 import * as $$0 from "./islands/PokemonCardList.tsx";
 
 const manifest = {
   routes: {
     "./routes/_app.tsx": $0,
     "./routes/api/_types.ts": $1,
-    "./routes/api/getPokemonList.ts": $2,
-    "./routes/index.tsx": $3,
+    "./routes/index.tsx": $2,
   },
   islands: {
     "./islands/PokemonCardList.tsx": $$0,

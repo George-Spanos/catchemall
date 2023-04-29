@@ -7,7 +7,7 @@ export default function App({ Component }: AppProps) {
   return (
     <html data-custom="data">
       <Head>
-        <title>Fresh</title>
+        <title>Catch'em All</title>
         <link rel="stylesheet" href={asset("style.css")} />
       </Head>
       <body>
