@@ -1,25 +1,16 @@
-import { Head } from "$fresh/runtime.ts";
-import Counter from "../islands/Counter.tsx";
+import { Handlers, PageProps } from "https://deno.land/x/fresh@1.1.5/server.ts";
+import PokemonCardList from "../islands/PokemonCardList.tsx";
+import { PokemonList } from "./api/_types.ts";
 
-export default function Home() {
+export const handler: Handlers<PokemonList | null> = {
+  async GET(_, ctx) {
+    const data = (await fetch("./api/getPokemonList").then(r => r.json())) as PokemonList;
+    return ctx.render(data);
+  },
+};
+
+export default function Index({ data }: PageProps<PokemonList | null>) {
   return (
-    <>
-      <Head>
-        <title>Fresh App</title>
-      </Head>
-      <div>
-        <img
-          src="/logo.svg"
-          width="128"
-          height="128"
-          alt="the fresh logo: a sliced lemon dripping with juice"
-        />
-        <p>
-          Welcome to `fresh`. Try updating this message in the ./routes/index.tsx
-          file, and refresh.
-        </p>
-        <Counter start={3} />
-      </div>
-    </>
+    data && <PokemonCardList pokemonList={data} ></PokemonCardList>
   );
 }

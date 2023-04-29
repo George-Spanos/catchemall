@@ -1,0 +1,26 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 60vh;
+  padding: 1rem 2rem;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  color: white;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg, rgba(2, 0, 36, 0.8) 0%, rgba(9, 9, 121, 0.8) 35%, rgb(0, 113, 136) 50%);
+}
+
+.pokelist {
+  display: flex;
+  gap: 1rem;
+}
+
+.pokecard {
+  text-align: center;
+  width: 200px;
+  height: 300px;
+  padding: 3rem 3,5rem;
+  border: 2px solid black;
+  border-radius: 15px;
+}
