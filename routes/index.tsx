@@ -1,7 +1,8 @@
 import { Handlers, PageProps } from "https://deno.land/x/fresh@1.1.5/server.ts";
 import PokemonCardList from "../islands/PokemonCardList.tsx";
-import { PokemonList, fetchPokemonEndpoint, firstPokemonId, getRandomInt, lastPokemonId } from "./api/_types.ts";
-export const handler: Handlers<PokemonList | null> = {
+import { PokemonList, fetchPokemonEndpoint, firstPokemonId, getRandomInt, lastPokemonId } from "../_types.ts";
+import CaughtList from "../islands/CaughtList.tsx";
+export const handler: Handlers<{ newPokemons: PokemonList; caught: PokemonList; }> = {
   async GET(req, ctx) {
     let len = Number(new URL(req.url).searchParams.get("len"));
     // respect the api load. limit is 1-5
@@ -14,14 +15,18 @@ export const handler: Handlers<PokemonList | null> = {
         ).then((r) => (r.json()))
       ),
     );
-    const pokemons = PokemonList.parse(res);
-
-    return ctx.render(pokemons);
+    const newPokemons = PokemonList.parse(res);
+    const caughtRes = await fetch("api/catch");
+    const caught = await caughtRes.json();
+    return ctx.render({ newPokemons, caught });
   },
 };
 
-export default function Index({ data }: PageProps<PokemonList | null>) {
+export default function Index({ data }: PageProps<{ newPokemons: PokemonList; caught: PokemonList; }>) {
   return (
-    data && <PokemonCardList pokemonList={data} ></PokemonCardList>
+    <>
+      <PokemonCardList pokemonList={data.newPokemons} />
+      <CaughtList caught={data.caught} />
+    </>
   );
 }

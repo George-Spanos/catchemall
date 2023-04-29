@@ -1,5 +1,5 @@
 import { PokemonCard } from "../components/PokermonCard.tsx";
-import { PokemonList } from "../routes/api/_types.ts";
+import { PokemonList } from "../_types.ts";
 
 export default function PokemonCardList(props: { pokemonList: PokemonList; }) {
   return (
