@@ -1,0 +1,12 @@
+h1,
+h5 {
+  font-family: "pokemon";
+  font-size: 4rem;
+  line-height: 25px;
+  /* letter-spacing: 5px; */
+}
+
+@font-face {
+  font-family: pokemon;
+  src: url(Pokemon\ Hollow.ttf);
+}

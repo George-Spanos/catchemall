@@ -11,7 +11,7 @@ export default function App({ Component }: AppProps) {
         <link rel="stylesheet" href={asset("style.css")} />
       </Head>
       <body>
-        <h1 class="text-center">Pokelist</h1>
+        <h1 class="text-center">PoKe  LiSt</h1>
         <Component />
       </body>
     </html>

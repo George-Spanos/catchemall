@@ -1,0 +1,10 @@
+@media only screen and (max-width: 600px) {
+  .pokelist {
+    flex-direction: column;
+    align-items: center;
+  }
+  .caught-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
