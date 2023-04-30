@@ -1,7 +1,7 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
 import { asset } from "https://deno.land/x/fresh@1.1.5/runtime.ts";
 import { Pokemon } from "../_types.ts";
-import { caughtPokemonList } from "../routes/index.tsx";
+import { caughtPokemonList } from "../islands/CaughtList.tsx";
 export function PokemonCard(props: { pokemon: Pokemon; }) {
   const catchAttempted = useSignal(false);
   const caught = useSignal(false);
@@ -19,7 +19,7 @@ export function PokemonCard(props: { pokemon: Pokemon; }) {
       catchAttempted.value = true;
       const r = Math.random();
       // 50% chance to catch the pokemon
-      caught.value = r > 0.5;
+      caught.value = r > 0.1;
     }}>
       <h2># {pokemon.id} {caught.value && <img width="20" src={asset("favicon.ico")} />} </h2>
       <h2>{pokemon.name}</h2>

@@ -2,8 +2,6 @@ import { Handlers, PageProps } from "https://deno.land/x/fresh@1.1.5/server.ts";
 import { PokemonList, fetchPokemonEndpoint, firstPokemonId, getRandomInt, lastPokemonId } from "../_types.ts";
 import CaughtList from "../islands/CaughtList.tsx";
 import PokemonCardList from "../islands/PokemonCardList.tsx";
-import { Signal, effect, signal } from "https://esm.sh/*@preact/signals@1.1.3";
-export const caughtPokemonList: Signal<PokemonList> = signal([]);
 
 export const handler: Handlers<{ newPokemons: PokemonList; caught: PokemonList; }> = {
   async GET(req, ctx) {
@@ -26,7 +24,6 @@ export const handler: Handlers<{ newPokemons: PokemonList; caught: PokemonList; 
 };
 
 export default function Index({ data }: PageProps<{ newPokemons: PokemonList; caught: PokemonList; }>) {
-  caughtPokemonList.value = data.caught;
   return (
     <>
       <PokemonCardList pokemonList={data.newPokemons} />
