@@ -11,6 +11,6 @@ export const handler: Handlers = {
     const body = await req.json();
     Pokemon.parse(body);
     caughtList.push(body);
-    return new Response('success');
+    return new Response(JSON.stringify(caughtList));
   }
 };
