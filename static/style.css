@@ -34,13 +34,20 @@ body {
   border: 2px solid black;
   border-radius: 15px;
   cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0.5;
 }
 
 .pokecard:hover {
+  opacity: 1;
   border-color: lightblue;
   transform: scale(1.05, 1.05);
   transition: all 100ms linear;
 
+}
+
+.pokecard.caught {
+  opacity: 1;
 }
 
 .caught-list {

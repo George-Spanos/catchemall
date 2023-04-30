@@ -2,24 +2,27 @@ import { useSignal, useSignalEffect } from "@preact/signals";
 import { asset } from "https://deno.land/x/fresh@1.1.5/runtime.ts";
 import { Pokemon } from "../_types.ts";
 import { caughtPokemonList } from "../islands/CaughtList.tsx";
+import { useState } from "https://esm.sh/v117/preact@10.13.1/hooks";
 export function PokemonCard(props: { pokemon: Pokemon; }) {
   const catchAttempted = useSignal(false);
   const caught = useSignal(false);
   const pokemon = props.pokemon;
+  const [cardClass, setCardClass] = useState("pokecard");
   useSignalEffect(() => {
     if (caught.value) {
       fetch("api/catch", { body: JSON.stringify(pokemon), method: "POST" }).then(r => r.json()).then(pl => {
         caughtPokemonList.value = pl;
+        setCardClass(cardClass + " caught");
       });
     }
   });
   return (
-    <div class="pokecard" style={{ "cursor": !catchAttempted.value ? "pointer" : "default" }} onClick={() => {
+    <div class={cardClass} style={{ "cursor": !catchAttempted.value ? "pointer" : "default" }} onClick={() => {
       if (catchAttempted.value) return;
       catchAttempted.value = true;
       const r = Math.random();
       // 50% chance to catch the pokemon
-      caught.value = r > 0.1;
+      caught.value = r > 0.5;
     }}>
       <h2># {pokemon.id} {caught.value && <img width="20" src={asset("favicon.ico")} />} </h2>
       <h2>{pokemon.name}</h2>
