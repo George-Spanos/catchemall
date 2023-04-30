@@ -10,4 +10,4 @@ COPY . .
 RUN deno cache main.ts --import-map=import_map.json
 
 EXPOSE 8000
-CMD deno run -A --location ${LOCATION} main.ts
+CMD deno run --allow-env --allow-run --allow-net --allow-read --allow-write --location ${LOCATION} main.ts

@@ -8,6 +8,9 @@
 		"deno.enable": true,
 		"[typescript]": {
 			"editor.defaultFormatter": "denoland.vscode-deno"
+		},
+		"yaml.schemas": {
+			"https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": "*/docker-stack.yml"
 		}
 	},
 	"extensions": {

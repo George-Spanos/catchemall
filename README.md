@@ -1,5 +1,9 @@
 # fresh project
 
+## Live url
+
+https://pokemon.mobyplaygrounds.com
+
 ### Usage
 
 Start the project:

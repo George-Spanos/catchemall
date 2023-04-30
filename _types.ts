@@ -7,6 +7,7 @@ const PokemonType = z.object({
     name: z.string(),
   }),
 });
+
 export type PokemonType = z.infer<typeof PokemonType>;
 export const Pokemon = z.object({
   id: z.number(),

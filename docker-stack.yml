@@ -1,9 +1,11 @@
-version: '3.9'
+version: "3.9"
 services:
   web:
     ports:
       - 9138:8000
     image: mobyit/catchemall:${TAG}
+    volumes:
+      - pokedata:/app/data
     deploy:
       rollback_config:
         failure_action: pause
@@ -19,3 +21,7 @@ services:
         delay: 5s
         parallelism: 1
         order: stop-first
+volumes:
+  pokedata:
+    external: true
+      
