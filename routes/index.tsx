@@ -3,6 +3,10 @@ import { PokemonList, fetchPokemonEndpoint, firstPokemonId, getRandomInt, lastPo
 import CaughtList from "../islands/CaughtList.tsx";
 import PokemonCardList from "../islands/PokemonCardList.tsx";
 
+const origin: () => string = () => {
+  return Deno.env.get("ROOT_URL") || "http://localhost:8000/";
+};
+
 export const handler: Handlers<{ newPokemons: PokemonList; caught: PokemonList; }> = {
   async GET(req, ctx) {
     let len = Number(new URL(req.url).searchParams.get("len"));
@@ -17,7 +21,7 @@ export const handler: Handlers<{ newPokemons: PokemonList; caught: PokemonList; 
       ),
     );
     const newPokemons = PokemonList.parse(res);
-    const r = await fetch("api/catch");
+    const r = await fetch(origin() + "api/catch");
     const caught = await r.json();
     return ctx.render({ newPokemons, caught });
   },

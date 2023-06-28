@@ -1,4 +1,4 @@
-FROM denoland/deno:1.32.3
+FROM denoland/deno:1.34.3
 
 ARG URL=https://pokemon.mobyplaygrounds.com
 

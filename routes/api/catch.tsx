@@ -5,6 +5,12 @@ export const filepath = './data/caught.json';
 export const handler: Handlers = {
   async GET() {
     try {
+      await Deno.stat(filepath);
+    } catch (e) {
+      console.warn(e);
+      await Deno.writeTextFile(filepath, JSON.stringify([]));
+    }
+    try {
       const caughtList: string = await Deno.readTextFile(filepath);
       PokemonList.parse(JSON.parse(caughtList));
       return new Response(caughtList);
