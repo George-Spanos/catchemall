@@ -1,4 +1,4 @@
-import { asset } from "https://deno.land/x/fresh@1.1.5/runtime.ts";
+import { asset } from "$fresh/runtime.ts";
 import { Pokemon } from "../_types.ts";
 
 export function CaughtCard(props: { pokemon: Pokemon; }) {

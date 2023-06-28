@@ -1,8 +1,9 @@
 import { useSignal, useSignalEffect } from "@preact/signals";
-import { asset } from "https://deno.land/x/fresh@1.1.5/runtime.ts";
+import { asset } from "$fresh/runtime.ts";
 import { Pokemon } from "../_types.ts";
 import { caughtPokemonList } from "../islands/CaughtList.tsx";
-import { useState } from "https://esm.sh/v117/preact@10.13.1/hooks";
+import { useState } from "preact/hooks"
+
 export function PokemonCard(props: { pokemon: Pokemon; }) {
   const catchAttempted = useSignal(false);
   const caught = useSignal(false);

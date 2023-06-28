@@ -1,5 +1,5 @@
-import { Signal, signal } from "https://esm.sh/*@preact/signals@1.1.3";
-import { useEffect } from "https://esm.sh/preact@10.13.1/hooks";
+import { Signal, signal } from "@preact/signals-core";
+import { useEffect } from "preact/hooks";
 import { PokemonList } from "../_types.ts";
 import { CaughtCard } from "../components/CaughtCard.tsx";
 export const caughtPokemonList: Signal<PokemonList> = signal([]);

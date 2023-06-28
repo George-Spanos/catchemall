@@ -7,7 +7,7 @@ ENV DENO_DEPLOYMENT_ID=${GIT_REVISION}
 ENV LOCATION=${URL}
 WORKDIR /app
 COPY . .
-RUN deno cache main.ts --import-map=import_map.json
+RUN deno cache main.ts
 
 EXPOSE 8000
 CMD deno run --allow-env --allow-run --allow-net --allow-read --allow-write --location ${LOCATION} main.ts

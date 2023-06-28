@@ -1,4 +1,4 @@
-import { Handlers, PageProps } from "https://deno.land/x/fresh@1.1.5/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 import { PokemonList, fetchPokemonEndpoint, firstPokemonId, getRandomInt, lastPokemonId } from "../_types.ts";
 import CaughtList from "../islands/CaughtList.tsx";
 import PokemonCardList from "../islands/PokemonCardList.tsx";
