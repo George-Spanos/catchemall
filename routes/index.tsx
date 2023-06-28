@@ -21,9 +21,13 @@ export const handler: Handlers<{ newPokemons: PokemonList; caught: PokemonList; 
       ),
     );
     const newPokemons = PokemonList.parse(res);
-    const r = await fetch(origin() + "api/catch");
-    const caught = await r.json();
-    return ctx.render({ newPokemons, caught });
+    try {
+      const r = await fetch(origin() + "api/catch");
+      const caught = await r.json();
+      return ctx.render({ newPokemons, caught });
+    } catch (e) {
+      return new Response("", { status: 500 });
+    }
   },
 };
 

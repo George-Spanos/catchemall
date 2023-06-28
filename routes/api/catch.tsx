@@ -5,17 +5,11 @@ export const filepath = './data/caught.json';
 export const handler: Handlers = {
   async GET() {
     try {
-      await Deno.stat(filepath);
-    } catch (e) {
-      console.warn(e);
-      await Deno.writeTextFile(filepath, JSON.stringify([]));
-    }
-    try {
       const caughtList: string = await Deno.readTextFile(filepath);
       PokemonList.parse(JSON.parse(caughtList));
       return new Response(caughtList);
     } catch (e) {
-      console.error(e);
+      console.warn(e);
       return new Response('[]', { headers: [["content-type", "application/json"]] });
     }
   },
@@ -32,7 +26,7 @@ export const handler: Handlers = {
     } catch (e) {
       console.error(e);
       const caught = [body];
-      await Deno.writeTextFile(filepath, JSON.stringify(caught));
+      await Deno.writeTextFile(filepath, JSON.stringify(caught), { create: true });
       return new Response(JSON.stringify(caught));
     }
   }
